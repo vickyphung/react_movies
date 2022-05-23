@@ -19,18 +19,19 @@ const Home = (props) =>{
             <input onChange={ (e) => setUserSearch(e.target.value) } />
             <button onClick={ () => fetchData() } > Search </button>    
             
-            {movies.map( (movie, index) =>
-                <div key={index} className="movieCard">
+            {movies ? movies.map((movie, index) =>
+                <div key={index} className='movie-card'>
                     <h3>{movie.Title}</h3>
+                    <h5>type: {movie.Type}</h5>
                     <h5>year: {movie.Year}</h5>
                     <img src={movie.Poster} />
-                    <button onClick={()=>{
-                        props.setId(movie.imdbID)
+                    <button onClick={() => {
+                      props.setId(movie.imdbID)
                     }}
-                    >More Info</button>
+                    >More Information</button>
                 </div>
-            )}
-
+            ) : null}
+            
 
         </div>
     )
