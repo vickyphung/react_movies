@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import './style.css'
 
-const Home = () =>{
+const Home = (props) =>{
 
     const [movies, setMovies] = useState([])
     const [userSearch, setUserSearch] = useState('')
@@ -24,6 +24,10 @@ const Home = () =>{
                     <h3>{movie.Title}</h3>
                     <h5>year: {movie.Year}</h5>
                     <img src={movie.Poster} />
+                    <button onClick={()=>{
+                        props.setId(movie.imdbID)
+                    }}
+                    >More Info</button>
                 </div>
             )}
 
